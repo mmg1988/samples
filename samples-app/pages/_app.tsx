@@ -10,7 +10,7 @@ const roboto = Roboto({
 export default function MyApp({
   Component,
   pageProps
-}:Readonly<{
+}: Readonly<{
   Component: React.FC,
   pageProps: object
 }>) {

@@ -9,7 +9,7 @@ export default function Pokedex() {
           key={x.id}
           type={x.typeofpokemon[0].toLowerCase()}
         >
-          <div className={'front'}>
+          <Styles.FrontSide>
             <header>
               <Styles.Id>{x.id.substring(1)}</Styles.Id>
               <img src={x.imageurl} />
@@ -18,8 +18,8 @@ export default function Pokedex() {
               <Styles.Title>{x.name}</Styles.Title>
               <Styles.TypeIcon name={x.typeofpokemon[0].toLowerCase()} />
             </main>
-          </div>
-          <div className={'back'}>
+          </Styles.FrontSide>
+          <Styles.BackSide>
             <header>
               <Styles.Id>{x.id.substring(1)}</Styles.Id>
               <Styles.Title>{x.name}</Styles.Title>
@@ -53,7 +53,7 @@ export default function Pokedex() {
                 </div>
               </Styles.Stats>
             </main>
-          </div>
+          </Styles.BackSide>
         </Styles.Card>
       ))}
     </Styles.CardList>

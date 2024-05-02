@@ -82,72 +82,76 @@ export const CardList = styled.div`
   justify-content: center;
 `;
 
-export const Card = styled.div`
-  position: relative;
-  width: clamp(200px, 20% - 1em, 300px);
-  cursor: pointer;
+export const CardSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5em;
+  border-radius: 12px;
+  flex: 1;
+  min-height: 0;
+  background: var(--card-background);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  backface-visibility: hidden;
+`;
 
-  .front, .back {
+export const FrontSide = styled(CardSide)`
+  transform: rotateZ(0deg) rotateY(0deg);
+  transition: transform 500ms ease;
+
+  header {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    min-height: 0;
+    align-items: center;
+    padding: 0.5em 1em;
+  }
+
+  img {
+    min-height: 0;
     padding: 0.5em;
-    border-radius: 12px;
-    background: ${({ type }) => icons[type].color}33;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-    backface-visibility: hidden;
+    object-fit: contain;
   }
 
-  .front {
-    position: absolute;
-    inset: 0;
-    transform: rotateZ(0deg) rotateY(0deg);
-    transition: transform 500ms ease;
+  main {
+    text-align: center;
+  }
+`;
 
-    header {
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-      align-items: center;
-      padding: 0.5em 1em;
-      text-align: center;
-    }
+export const BackSide = styled(CardSide)`
+  position: absolute;
+  inset: 0;
+  transform: rotateZ(-15deg) rotateY(180deg);
+  transition: transform 500ms ease;
 
-    img {
-      min-height: 0;
-      padding: 0.5em;
-      object-fit: contain;
-      max-width: 100%;
-    }
-
-    main {
-      text-align: center;
-    }
+  header {
+    padding-top: 0.5em;
+    text-align: center;
   }
 
-  .back {
-    transform: rotateZ(-15deg) rotateY(180deg);
-    transition: transform 500ms ease;
-
-    header {
-      padding-top: 0.5em;
-      text-align: center;
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
+  main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
+`;
 
-  :hover .front {
+export const Card = styled.div`
+  --card-background: ${({ type }) => icons[type].color}33;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: clamp(200px, 20% - 1em, 300px);
+  height: 300px;
+  cursor: pointer;
+
+  :hover ${FrontSide} {
     transform: rotateZ(-15deg) rotateY(180deg);
   }
 
-  :hover .back {
+  :hover ${BackSide} {
     transform: rotateZ(0deg) rotateY(0deg);
   }
 `;
