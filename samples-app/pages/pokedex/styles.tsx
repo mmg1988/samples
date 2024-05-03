@@ -99,7 +99,6 @@ export const Title = styled.div`
 export const TypeIcon = styled.div`
   font-family: 'Material SYmbols Outlined';
   font-size: 28px;
-  margin-right: 6px;
   color: ${({ name }) => icons[name].color};
   text-shadow: 1px 1px rgba(0, 0, 0, 0.15);
 
@@ -110,7 +109,8 @@ export const TypeIcon = styled.div`
 
 export const Types = styled.div`
   display: flex;
-  justify-content: center;  
+  justify-content: center;
+  gap: 0.5em;
 `;
 
 export const Stats = styled.div`
