@@ -11,11 +11,9 @@ export const CardList = styled.div`
 export const CardSide = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 0.5em;
   border-radius: 12px;
   flex: 1;
-  min-height: 0;
   background: var(--card-background);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -30,14 +28,14 @@ export const FrontSide = styled(CardSide)`
   header {
     display: flex;
     flex-direction: column;
-    min-height: 0;
     align-items: center;
     padding: 0.5em 1em;
+    flex: 1;
   }
 
   img {
-    min-height: 0;
-    padding: 0.5em;
+    width: 100%;
+    flex: 1;
     object-fit: contain;
   }
 
